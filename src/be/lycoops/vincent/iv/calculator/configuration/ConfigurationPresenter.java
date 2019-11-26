@@ -25,18 +25,21 @@ public class ConfigurationPresenter implements Initializable {
 
     @FXML
     private Label level;
-
-    @FXML
-    private Button lv7;
-
-    @FXML
-    private Button lv8;
     
     @FXML
-    private Button lv9;
+    private Button evolved;
+
+    @FXML
+    private Button lv42;
+
+    @FXML
+    private Button lv43;
     
     @FXML
-    private Button lv10;
+    private Button lv44;
+    
+    @FXML
+    private Button lv45;
 
     @Inject
     private Pokemon pokemon;
@@ -52,6 +55,11 @@ public class ConfigurationPresenter implements Initializable {
 
     @Inject
     private NatureCalculator natureCalculator;
+    
+    public void evolve() {
+        pokemon.evolve();
+        history.addEvolution();
+    }
 
     public void levelPlus() {
         pokemon.levelUp();
@@ -61,30 +69,30 @@ public class ConfigurationPresenter implements Initializable {
         pokemon.levelDown();
     }
 
-    public void setL7() {
-        setBaseLevel(7);
+    public void setL42() {
+        setBaseLevel(42);
     }
 
-    public void setL8() {
-        setBaseLevel(8);
+    public void setL43() {
+        setBaseLevel(43);
     }
     
-    public void setL9() {
-        setBaseLevel(9);
+    public void setL44() {
+        setBaseLevel(44);
     }
     
-    public void setL10() {
-        setBaseLevel(10);
+    public void setL45() {
+        setBaseLevel(45);
     }
 
     private void setBaseLevel(int lv) {
-        Button[] btns = { lv7, lv8, lv9, lv10 };
+        Button[] btns = { lv42, lv43, lv44, lv45 };
         pokemon.reset(lv);
         natureCalculator.reset();
         pokemon.setHiddenPower(hiddenPowerCalculator.setUnknown());
         history.reset();
         for(int i=0;i<4;i++) {
-            btns[i].setDisable(i == lv-7);
+            btns[i].setDisable(i == lv-42);
         }
     }
 
@@ -95,8 +103,9 @@ public class ConfigurationPresenter implements Initializable {
             level.setText("L" + newLevel);
             updateEffortValues();
         });
+        pokemon.evolvedProperty().addListener((o, wasEvolved, isEvolved) -> evolved.setDisable(isEvolved));
         gameService.gameProperty().addListener((o, old, newGame) -> setGame(newGame));
-        lv7.setDisable(true);
+        lv42.setDisable(true);
     }
 
     private void setGame(Game game) {

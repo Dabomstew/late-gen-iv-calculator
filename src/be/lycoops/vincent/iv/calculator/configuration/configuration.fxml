@@ -14,7 +14,15 @@
             </VBox.margin>
         </Label>
         <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#levelMinus" prefHeight="45.0" prefWidth="45.0" style="-fx-font-size: 20px;" text="-" />
-        <Button fx:id="lv7" alignment="CENTER" layoutX="13.0" layoutY="155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL7" prefHeight="45.0" prefWidth="45.0" text="L7">
+        <Button fx:id="evolved" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#evolve" prefHeight="45.0" prefWidth="45.0" text="Evo">
+        	<VBox.margin>
+                <Insets top="15.0" />
+            </VBox.margin>
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Button>
+        <Button fx:id="lv42" alignment="CENTER" layoutX="13.0" layoutY="155.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL42" prefHeight="45.0" prefWidth="45.0" text="L42">
             <font>
                 <Font size="11.0" />
             </font>
@@ -22,7 +30,7 @@
                 <Insets top="15.0" />
             </VBox.margin>
         </Button>
-        <Button fx:id="lv8" alignment="CENTER" layoutX="13.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL8" prefHeight="45.0" prefWidth="45.0" text="L8">
+        <Button fx:id="lv43" alignment="CENTER" layoutX="13.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL43" prefHeight="45.0" prefWidth="45.0" text="L43">
             <VBox.margin>
                 <Insets top="5.0" />
             </VBox.margin>
@@ -30,7 +38,7 @@
                 <Font size="11.0" />
             </font>
         </Button>
-        <Button fx:id="lv9" alignment="CENTER" layoutX="13.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL9" prefHeight="45.0" prefWidth="45.0" text="L9">
+        <Button fx:id="lv44" alignment="CENTER" layoutX="13.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL44" prefHeight="45.0" prefWidth="45.0" text="L44">
             <VBox.margin>
                 <Insets top="5.0" />
             </VBox.margin>
@@ -38,7 +46,7 @@
                 <Font size="11.0" />
             </font>
         </Button>
-        <Button fx:id="lv10" alignment="CENTER" layoutX="13.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL10" prefHeight="45.0" prefWidth="45.0" text="L10">
+        <Button fx:id="lv45" alignment="CENTER" layoutX="13.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#setL45" prefHeight="45.0" prefWidth="45.0" text="L45">
             <VBox.margin>
                 <Insets top="5.0" />
             </VBox.margin>

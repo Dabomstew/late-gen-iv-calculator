@@ -18,7 +18,7 @@ public class App extends Application {
         Scene scene = new Scene(view.getView());
         presenter.setScene(scene);
         stage.setScene(scene);
-        stage.setTitle("Arcanine IV Calculator (base by wartab, Arcanine impl. by Dabomstew)");
+        stage.setTitle("Shield Excadrill IV Calculator (base by wartab, Excadrill impl. by Dabomstew)");
         stage.show();
     }
 
