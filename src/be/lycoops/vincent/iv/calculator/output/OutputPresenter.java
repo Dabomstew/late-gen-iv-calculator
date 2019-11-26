@@ -1,22 +1,21 @@
 package be.lycoops.vincent.iv.calculator.output;
 
-import be.lycoops.vincent.iv.model.*;
-import javafx.beans.property.IntegerProperty;
-import javafx.event.Event;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
-import javafx.scene.paint.Paint;
-
-import javax.inject.Inject;
 import java.net.URL;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
+
+import javax.inject.Inject;
+
+import be.lycoops.vincent.iv.model.HiddenPowerCalculator;
+import be.lycoops.vincent.iv.model.Nature;
+import be.lycoops.vincent.iv.model.NatureCalculator;
+import be.lycoops.vincent.iv.model.Pokemon;
+import be.lycoops.vincent.iv.model.Stat;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Paint;
 
 public class OutputPresenter implements Initializable {
 
@@ -37,9 +36,6 @@ public class OutputPresenter implements Initializable {
 
     @FXML
     private Label spDefIvRange;
-
-    @FXML
-    private Label hiddenPowerLabel;
 
     @FXML
     private Label nature;
@@ -95,27 +91,6 @@ public class OutputPresenter implements Initializable {
         pokemon.setNature(Nature.DOCILE);
     }
 
-    public void changeHiddenPower(Event event) {
-        if (event instanceof MouseEvent) {
-            MouseEvent mouseEvent = (MouseEvent) event;
-            MouseButton mouseButton = mouseEvent.getButton();
-            if (mouseEvent.isShiftDown() || mouseButton.equals(MouseButton.SECONDARY)) {
-                pokemon.setHiddenPower(hiddenPowerCalculator.updateToNext());
-            } else if (mouseButton.equals(MouseButton.PRIMARY)) {
-                pokemon.setHiddenPower(hiddenPowerCalculator.updateToPrevious());
-            } else if (mouseButton.equals(MouseButton.MIDDLE)) {
-                pokemon.setHiddenPower(hiddenPowerCalculator.setUnknown());
-            }
-        } else if (event instanceof ScrollEvent) {
-            double delta = ((ScrollEvent) event).getDeltaY();
-            if (delta > 0) {
-                pokemon.setHiddenPower(hiddenPowerCalculator.updateToNext());
-            } else if (delta < 0) {
-                pokemon.setHiddenPower(hiddenPowerCalculator.updateToPrevious());
-            }
-        }
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         statRanges.put(Stat.HP, hpIvRange);
@@ -146,9 +121,6 @@ public class OutputPresenter implements Initializable {
             pokemon.getMaxPlusIndividualValues().get(stat).addListener((_o, o, n) -> displayIndividualValues(stat));
             displayIndividualValues(stat);
         }
-
-        pokemon.hiddenPowerProperty().addListener((o, oldHp, newHp) ->
-                hiddenPowerLabel.setText(newHp == null ? "?" : newHp.getName()));
 
         pokemon.natureProperty().addListener((o, oldNature, newNature) ->
                 nature.setText(newNature == null ? "?" : newNature.getName()));

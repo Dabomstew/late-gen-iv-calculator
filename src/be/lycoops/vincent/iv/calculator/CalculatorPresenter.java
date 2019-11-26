@@ -1,8 +1,12 @@
 package be.lycoops.vincent.iv.calculator;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import javax.inject.Inject;
+
 import be.lycoops.vincent.iv.calculator.configuration.ConfigurationView;
-import be.lycoops.vincent.iv.calculator.hiddenpower.HiddenPowerView;
 import be.lycoops.vincent.iv.calculator.output.OutputView;
 import be.lycoops.vincent.iv.calculator.reset.ResetView;
 import be.lycoops.vincent.iv.calculator.statselector.StatSelectorView;
@@ -20,10 +24,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 
-import javax.inject.Inject;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 public class CalculatorPresenter implements Initializable {
 
     @FXML
@@ -39,7 +39,7 @@ public class CalculatorPresenter implements Initializable {
     private History history;
 
     public void initialize(URL location, ResourceBundle resources) {
-        pane.setTop(new HiddenPowerView().getView());
+        //pane.setTop(new HiddenPowerView().getView());
         pane.setLeft(new ConfigurationView().getView());
         pane.setRight(new ResetView().getView());
         pane.setBottom(new OutputView().getView());

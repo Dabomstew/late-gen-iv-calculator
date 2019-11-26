@@ -113,20 +113,6 @@
                 </Label>
             </children>
         </VBox>
-        <VBox maxWidth="-Infinity" onMouseClicked="#changeHiddenPower" onScroll="#changeHiddenPower" prefWidth="75.0">
-            <children>
-                <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="H. Power" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <Label fx:id="hiddenPowerLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="?" textFill="WHITE">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Label>
-            </children>
-        </VBox>
     </children>
     <BorderPane.margin>
         <Insets />

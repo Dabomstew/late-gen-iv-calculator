@@ -1,12 +1,18 @@
 package be.lycoops.vincent.iv.model;
 
-import javafx.beans.property.*;
-
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
+import javax.annotation.PostConstruct;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 
 public class Pokemon {
     private boolean isPikipek = false;
@@ -15,6 +21,11 @@ public class Pokemon {
      * Current level of the Pokémon.
      */
     private IntegerProperty level = new SimpleIntegerProperty();
+    
+    /**
+     * Base level of the Pokémon.
+     */
+    private IntegerProperty baseLevel = new SimpleIntegerProperty();
 
     /**
      * Nature of the Pokémon.
@@ -80,30 +91,21 @@ public class Pokemon {
             }
 
         }
-        reset();
+        reset(7);
     }
 
     /**
      * Resets the Pokémon to Popplio at level 5
      */
-    public void reset() {
-        if (isPikipek) {
-            level.set(2);
-            baseValues.put(Stat.HP, 35);
-            baseValues.put(Stat.ATK, 75);
-            baseValues.put(Stat.DEF, 30);
-            baseValues.put(Stat.SPD, 65);
-            baseValues.put(Stat.SP_ATK, 30);
-            baseValues.put(Stat.SP_DEF, 30);
-        } else {
-            level.set(5);
-            baseValues.put(Stat.HP, 50);
-            baseValues.put(Stat.ATK, 40);
-            baseValues.put(Stat.DEF, 40);
-            baseValues.put(Stat.SP_ATK, 70);
-            baseValues.put(Stat.SP_DEF, 40);
-            baseValues.put(Stat.SPD, 70);
-        }
+    public void reset(int levelNum) {
+        baseLevel.set(levelNum);
+        level.set(levelNum);
+        baseValues.put(Stat.HP, 90);
+        baseValues.put(Stat.ATK, 110);
+        baseValues.put(Stat.DEF, 80);
+        baseValues.put(Stat.SP_ATK, 100);
+        baseValues.put(Stat.SP_DEF, 80);
+        baseValues.put(Stat.SPD, 95);
         evolved.set(false);
         for (final Stat stat: Stat.ALL_STATS) {
             effortValues.get(stat).set(0);
@@ -202,6 +204,10 @@ public class Pokemon {
 
     public int getLevel() {
         return level.get();
+    }
+    
+    public int getBaseLevel() {
+        return baseLevel.get();
     }
 
     public IntegerProperty levelProperty() {
